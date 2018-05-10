@@ -1,0 +1,61 @@
+﻿@model AondeVamosAlmocar.ViewModels.VotarViewModel
+
+@{
+	ViewBag.Title = "Acompanhar votação";
+}
+
+@using (Html.BeginForm())
+{
+<div class="jumbotron form-horizontal" style="height: 600px">
+
+	<h2>Votação do dia</h2>
+	<table class="table">
+		<tr>
+			<th>Restaurante</th>
+			<th>Votos</th>
+		</tr>
+
+		@foreach (var item in Model.ResultadoVotacaoDataItem.Where(x => !x.VotacaoFinalizada))
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.NmRestaurante)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.QtdVotos)
+				</td>
+			</tr>
+		}
+	</table>
+
+	<h2>Votações passadas</h2>
+	<table class="table">
+		<tr>
+			<th>Data</th>
+			<th>Restaurante</th>
+			<th>Votos</th>
+		</tr>
+
+		@foreach (var item in Model.ResultadoVotacaoDataItem.Where(x => x.VotacaoFinalizada))
+		{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.DataFormatada)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NmRestaurante)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.QtdVotos)
+			</td>
+		</tr>
+		}
+	</table>
+</div>
+}
+
+<div>
+	@Html.ActionLink("Votar", "Create", "Votar", routeValues: null, htmlAttributes: new { id = "votarLink", style = "font-size: 30px" })
+
+	@Html.ActionLink("Voltar", "Index", "Home", routeValues: null, htmlAttributes: new { style = "margin-left: 30px" })
+</div>

@@ -1,0 +1,30 @@
+﻿@model AondeVamosAlmocar.ViewModels.VotarViewModel
+
+@{
+	ViewBag.Title = "Restaurante";
+}
+
+@using (Html.BeginForm())
+{
+	<div class="jumbotron form-horizontal" style="height: 600px">
+		<h2>Restaurantes</h2>
+		<table class="table">
+			<tr>
+				<th>Restaurantes</th>
+			</tr>
+
+			@foreach (var item in Model.RestaurantesViewModel.Restaurantes)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Value)
+					</td>
+				</tr>
+			}
+		</table>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Voltar", "Index", "Home")
+</div>

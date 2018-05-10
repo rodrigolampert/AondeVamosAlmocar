@@ -1,0 +1,16 @@
+﻿@{
+	ViewBag.Title = "Página Inicial";
+}
+
+<div class="jumbotron" style="height: 250px">
+	<h2 style="margin-left: 14px">O que você deseja fazer?</h2>
+	<div class="col-md-5">
+		<h2>@Html.ActionLink("Acompanhar Votação", "Index", "Votar", routeValues: null, htmlAttributes: new { id = "acompanharLink" })</h2>
+	</div>
+	<div class="col-md-2">
+		<h2>@Html.ActionLink("Votar", "Create", "Votar", routeValues: null, htmlAttributes: new { id = "votarLink" })</h2>
+	</div>
+	<div class="col-md-3">
+		<h2>@Html.ActionLink("Criar usuário", "Create", "Usuario", routeValues: null, htmlAttributes: new { id = "usuarioLink" })</h2>
+	</div>
+</div>

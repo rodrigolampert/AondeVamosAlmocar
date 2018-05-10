@@ -1,0 +1,39 @@
+﻿@model AondeVamosAlmocar.ViewModels.UsuarioViewModel
+
+@{
+	ViewBag.Title = "Usuário";
+}
+
+@using (Html.BeginForm())
+{
+	<div class="jumbotron form-horizontal" style="height: 200px">
+
+		<div class="form-group">
+
+			<div class="col-md-10">
+				<p>Digite o seu nome: </p>
+
+				@Html.EditorFor(model => model.Nome)
+				@Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+				<input type="submit" value="Criar" class="btn btn-default" /> 
+				@if (@ViewBag.Error == true)
+				{
+					<label class="text-danger">@ViewBag.Result</label>
+				}
+				else
+				{
+					<label class="text-success">@ViewBag.Result</label>
+				}
+
+			</div>
+			@*<div class="col-md-10">
+				@ViewBag.Result
+			</div>*@
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Voltar", "Index", "Home")
+</div>
